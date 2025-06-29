@@ -24,7 +24,7 @@ Sigue estos pasos para obtener una copia local del proyecto y preparar su ejecuc
     Abre tu terminal y ejecuta el siguiente comando para clonar el proyecto desde GitHub:
 
     ```bash
-    git clone [https://github.com/diegosierrase/angular-realworld-example-app.git](https://github.com/diegosierrase/angular-realworld-example-app.git)
+    git clone https://github.com/diegosierrase/angular-realworld-example-app.git
     ```
 
 2.  **Navegar al directorio del proyecto**:
