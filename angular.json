@@ -23,8 +23,8 @@
               "src/favicon.ico",
               "src/assets",
               {
-                "glob": "_redirects",
-                "input": "src",
+                "glob": "mockServiceWorker.js",
+                "input": "src/assets/",
                 "output": "/"
               }
             ],
