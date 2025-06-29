@@ -1,64 +1,84 @@
-[![RealWorld Frontend](https://img.shields.io/badge/realworld-frontend-%23783578.svg)](http://realworld.io)
-[![Build Status](https://travis-ci.org/gothinkster/angular-realworld-example-app.svg?branch=master)](https://travis-ci.org/gothinkster/angular-realworld-example-app)
+# angular-realworld-example-app
 
-# ![Angular Example App](logo.png)
+Este proyecto es una implementación de la aplicación [conduit](https://github.com/gothinkster/angular-realworld-example-app) utilizando Angular 20.0.0. Incluye configuraciones para ejecutar la aplicación con un mock de la API utilizando [MSW (Mock Service Worker)](https://mswjs.io/), lo que permite el desarrollo y las pruebas sin depender de una API backend real.
 
-> ### Angular codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec and API.
+## Herramientas Necesarias
 
-### [RealWorld](https://github.com/gothinkster/realworld)
+Para poder ejecutar este proyecto, debes tener las siguientes herramientas instaladas y configuradas en tu sistema:
 
-This codebase was created to demonstrate a fully fledged application built with Angular that interacts with an actual backend server including CRUD operations, authentication, routing, pagination, and more. We've gone to great lengths to adhere to the [Angular Styleguide](https://angular.io/styleguide) & best practices.
+* **Node.js**: Se recomienda usar la versión especificada en `engines` del `package.json`, que es `^20.11.1`. Puedes descargarla desde [nodejs.org](https://nodejs.org/).
+    * **Verificar instalación**: Abre tu terminal y ejecuta `node -v` y `npm -v`.
 
-Additionally, there is an Angular 1.5 version of this codebase that you can [fork](https://github.com/gothinkster/angularjs-realworld-example-app) and/or [learn how to recreate](https://thinkster.io/angularjs-es6-tutorial).
+* **Angular CLI**: Es la herramienta de línea de comandos oficial de Angular.
+    * **Instalar**: `npm install -g @angular/cli`
+    * **Verificar instalación**: `ng version` (debería mostrar Angular CLI 20.0.0 o superior).
 
-# How it works
+* **Git**: Sistema de control de versiones. Es probable que ya lo tengas instalado.
+    * **Verificar instalación**: `git --version`
 
-We're currently working on some docs for the codebase (explaining where functionality is located, how it works, etc) but the codebase should be straightforward to follow as is. We've also released a [step-by-step tutorial w/ screencasts](https://thinkster.io/tutorials/building-real-world-angular-2-apps) that teaches you how to recreate the codebase from scratch.
+## Cómo Clonar y Configurar el Proyecto
 
-# Getting started
+Sigue estos pasos para obtener una copia local del proyecto y preparar su ejecución:
 
-Make sure you have the [Angular CLI](https://github.com/angular/angular-cli#installation) installed globally. We use [Yarn](https://yarnpkg.com) to manage the dependencies, so we strongly recommend you to use it. you can install it from [Here](https://yarnpkg.com/en/docs/install), then run `yarn install` to resolve all dependencies (might take a minute).
+1.  **Clonar el repositorio**:
+    Abre tu terminal y ejecuta el siguiente comando para clonar el proyecto desde GitHub:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+    ```bash
+    git clone [https://github.com/diegosierrase/angular-realworld-example-app.git](https://github.com/diegosierrase/angular-realworld-example-app.git)
+    ```
 
-### Building the project
+2.  **Navegar al directorio del proyecto**:
+    Una vez clonado, entra al directorio del proyecto:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+    ```bash
+    cd angular-realworld-example-app
+    ```
 
-## Functionality overview
+3.  **Instalar dependencias**:
+    Este comando descargará e instalará todas las dependencias del proyecto listadas en `package.json`:
 
-The example application is a social blogging site (i.e. a Medium.com clone) called "Conduit". It uses a custom API for all requests, including authentication. You can view a live demo over at https://angular.realworld.io
+    ```bash
+    npm install
+    ```
+    Este proceso puede tardar unos minutos.
 
-**General functionality:**
+4.  **Configurar Husky (Hooks de Git - Opcional pero recomendado)**:
+    El proyecto utiliza `husky` para gestionar hooks de Git (como pre-commit). Este paso debería ejecutarse automáticamente con `npm install` debido al script `prepare`, pero si no es así, o si tienes algún problema, puedes forzarlo:
 
-- Authenticate users via JWT (login/signup pages + logout button on settings page)
-- CRU\* users (sign up & settings page - no deleting required)
-- CRUD Articles
-- CR\*D Comments on articles (no updating required)
-- GET and display paginated lists of articles
-- Favorite articles
-- Follow other users
+    ```bash
+    npm run prepare
+    ```
 
-**The general page breakdown looks like this:**
+## Cómo Levantar el Proyecto
 
-- Home page (URL: /#/ )
-  - List of tags
-  - List of articles pulled from either Feed, Global, or by Tag
-  - Pagination for list of articles
-- Sign in/Sign up pages (URL: /#/login, /#/register )
-  - Uses JWT (store the token in localStorage)
-  - Authentication can be easily switched to session/cookie based
-- Settings page (URL: /#/settings )
-- Editor page to create/edit articles (URL: /#/editor, /#/editor/article-slug-here )
-- Article page (URL: /#/article/article-slug-here )
-  - Delete article button (only shown to article's author)
-  - Render markdown from server client side
-  - Comments section at bottom of page
-  - Delete comment button (only shown to comment's author)
-- Profile page (URL: /#/profile/:username, /#/profile/:username/favorites )
-  - Show basic user info
-  - List of articles populated from author's created articles or author's favorited articles
+Este proyecto está configurado para ejecutarse con **MSW (Mock Service Worker)** para simular la API backend. Esto significa que no necesitas un servidor de backend real funcionando para desarrollar y probar la aplicación.
 
-<br />
+1.  **Iniciar el servidor de desarrollo de Angular con MSW (Modo Mock):**
+    Para iniciar la aplicación Angular en tu entorno local, ejecuta el siguiente comando:
 
-[![Brought to you by Thinkster](https://raw.githubusercontent.com/gothinkster/realworld/master/media/end.png)](https://thinkster.io)
+    ```bash
+    npm start
+    ```
+    Este comando levantará el servidor de desarrollo de Angular y activará el Service Worker de MSW, que interceptará las llamadas a la API y responderá con datos simulados.
+
+## Acceder a la Aplicación
+
+Una vez que el servidor de desarrollo esté en ejecución (verás un mensaje en la terminal indicando que está compilado), podrás acceder a la aplicación en tu navegador web.
+
+* **URL de Acceso**:
+    Abre tu navegador y navega a:
+
+    ```
+    http://localhost:4200/
+    ```
+
+## Información del Mock de Login
+
+El proyecto está configurado con un mock para la autenticación de usuarios. Para realizar un login exitoso en la aplicación mientras usas el modo mock, debes utilizar las siguientes credenciales:
+
+* **Usuario (Email)**: `test@example.com`
+* **Contraseña**: `Pruebas2020!`
+
+Estas credenciales están definidas en los handlers de MSW (`src/mocks/handlers.ts`) y son solo para propósitos de desarrollo y prueba local con el mock activado.
+
+---
